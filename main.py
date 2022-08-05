@@ -1,23 +1,5 @@
 #!/usr/bin/env python3
 
-''' This program is free software: you can redistribute it and/or modify it under the
-	terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-	This program is distributed in the hope that it will be useful, but WITHOUT ANY
-    WARRANTY; without even the implied warranty of MERCHANTABILITY or 
-    FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-    You should have received a copy of the GNU General Public License along with this program. 
-    If not, see <https://www.gnu.org/licenses/>.
-'''
-    
-    
-    
-    
-import dearpygui.dearpygui as dpg
-import sys
-import time
-import json
-
-
 
 """
 Module Docstring
@@ -27,18 +9,44 @@ __author__ = "Sela"
 __version__ = "1.0.0"
 __license__ = "GPLv3"
 
+#modules
+import tkinter
+import customtkinter #used for the GUI
+import time #used for time tracking (standard lib)
+import calendar
+import sys #system interactions (standard lib)
+import json #saving your personalized settings (standard lib)
 
-def main():
-    dpg.create_context()
-    dpg.create_viewport(title='Easy Time Manager', width = 500, height = 500)
 
+
+
+class App(customtkinter.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("Launcher Window")
+        self.geometry("300 x 200")
+        self.resizable(width=False, height=False)
+        
+        self.button = customtkinter.CTkButton(master = self, text = "Set alarm")
+        self.button.place(x = 80, y = 10)
+        
+        self.button = customtkinter.CTkButton(master = self, text = "Set schedule")
+        self.button.place(x = 80, y = 50)
+        
+        self.button = customtkinter.CTkButton(master = self, text = "Create new task")
+        self.button.place(x = 80, y = 90)
+        
+        self.button = customtkinter.CTkButton(master = self, text = "Track task")
+        self.button.place(x = 80, y = 130)
+        
+        self.button = customtkinter.CTkButton(master = self, text = "See calendar")
+        self.button.place(x = 80, y = 170)
+        
 
 
 
 
 if __name__ == "__main__":
-    main()
-    dpg.setup_dearpygui()
-    dpg.show_viewport()
-    dpg.start_dearpygui()
-    dpg.destroy_context()
+    app = App()
+    app.mainloop()
+
